@@ -16,17 +16,6 @@ public class EnemyAI : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 lastRoamDirection;
 
-    [System.Serializable]
-    public class EnemyStats //this is for each individual enemy
-    {
-    public string enemyName;
-    public float maxHP;
-    public float attackDamage;
-    public float walkSpeed;
-    public float attackCooldown;
-    public string[] weaknesses;
-    }
-
     private enum State
     {
         Roaming,
@@ -45,7 +34,6 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         state = State.Roaming;
-        currentHP = stats.maxHP;
         StartCoroutine(RoamingRoutine());
     }
 
