@@ -3,18 +3,20 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] private float detectionRadius = 5f; // Aggro range
-    [SerializeField] private float attackRange = 1.5f;   // Default melee range
-    [SerializeField] private float rangedStopDistance = 4f; // Ranged attack distance
-    [SerializeField] private float meleeStopDistance = 2f; // Melee attack reach
-    [SerializeField] private float speed = 2f; // Movement speed
-    [SerializeField] private float attackCooldown = 1.5f; // Cooldown before next attack
-    [SerializeField] private bool isRanged = false; // Defines AI attack behavior
-    
+    [SerializeField] private float detectionRadius = 5f;
+    [SerializeField] private float attackRange = 1.5f;
+    [SerializeField] private float rangedStopDistance = 4f;
+    [SerializeField] private float meleeStopDistance = 2f;
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private float attackCooldown = 1.5f;
+    [SerializeField] private bool isRanged = false;
+
     private Transform player;
     private bool isAttacking = false;
+    private bool isRoaming = true;
     private Rigidbody2D rb;
     private Vector2 lastRoamDirection;
+    private Coroutine roamingCoroutine;
 
     private enum State
     {
@@ -22,9 +24,9 @@ public class EnemyAI : MonoBehaviour
         Chasing,
         Attacking
     }
-    
+
     private State state;
-    
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -34,18 +36,23 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         state = State.Roaming;
-        StartCoroutine(RoamingRoutine());
+        roamingCoroutine = StartCoroutine(RoamingRoutine());
     }
 
     private void Update()
     {
-        if (player == null) return; // Prevents errors if player is missing
-        
+        if (player == null) return;
+
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        
+
         if (distanceToPlayer <= detectionRadius)
         {
-            state = State.Chasing;
+            if (state != State.Chasing)
+            {
+                state = State.Chasing;
+                StopRoaming();
+            }
+
             if (!isAttacking)
             {
                 if (isRanged)
@@ -56,16 +63,16 @@ public class EnemyAI : MonoBehaviour
         }
         else if (state == State.Chasing)
         {
-            // Player escaped, return to roaming
             state = State.Roaming;
-            StartCoroutine(RoamingRoutine());
+            StartRoaming();
         }
     }
 
     private void HandleRangedAI(float distance)
     {
-        if (distance > rangedStopDistance + 0.5f) // Buffer added to avoid rapid switching
+        if (distance > rangedStopDistance + 0.5f)
         {
+            Debug.Log("aggro ranged!");
             MoveTowards(player.position);
         }
         else if (distance < rangedStopDistance - 1f)
@@ -80,8 +87,9 @@ public class EnemyAI : MonoBehaviour
 
     private void HandleMeleeAI(float distance)
     {
-        if (distance > meleeStopDistance + 0.5f) // Buffer added
+        if (distance > meleeStopDistance + 0.5f)
         {
+            Debug.Log("aggro melee!");
             MoveTowards(player.position);
         }
         else if (distance < meleeStopDistance - 1f)
@@ -98,21 +106,23 @@ public class EnemyAI : MonoBehaviour
     {
         isAttacking = true;
         Debug.Log("Enemy attacks!");
-        
+
         yield return new WaitForSeconds(attackCooldown);
         isAttacking = false;
     }
 
+    // Movement Functions
     private void MoveTowards(Vector2 target)
     {
         Vector2 direction = (target - (Vector2)transform.position).normalized;
-        rb.velocity = direction * speed;
+        rb.linearVelocity = direction * speed;
     }
 
     private void MoveAwayFrom(Vector2 target)
     {
+        Debug.Log("Back away!");
         Vector2 direction = ((Vector2)transform.position - target).normalized;
-        rb.velocity = direction * speed;
+        rb.linearVelocity = direction * speed;
     }
 
     // Roaming Behavior
@@ -124,6 +134,25 @@ public class EnemyAI : MonoBehaviour
             MoveTowards(roamPosition);
             yield return new WaitForSeconds(2f);
         }
+    }
+
+    private void StartRoaming()
+    {
+        if (roamingCoroutine != null)
+            StopCoroutine(roamingCoroutine);
+
+        roamingCoroutine = StartCoroutine(RoamingRoutine());
+    }
+
+    private void StopRoaming()
+    {
+        if (roamingCoroutine != null)
+        {
+            StopCoroutine(roamingCoroutine);
+            roamingCoroutine = null;
+        }
+
+        rb.linearVelocity = Vector2.zero;
     }
 
     private Vector2 GetRoamingPosition()
