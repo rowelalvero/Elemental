@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1785240623996924819}
   - component: {fileID: 1924588390248273542}
   - component: {fileID: 66701312278327704}
+  - component: {fileID: 1339184004687202458}
   m_Layer: 0
   m_Name: spr_crate1
   m_TagString: Untagged
@@ -164,3 +165,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.78314495, y: 0.89931726}
   m_EdgeRadius: 0
+--- !u!114 &1339184004687202458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6130754992787103348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5857b6a5f25e0a49aecfa3179fbc0f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldCoin: {fileID: 8031162842319521324, guid: 8fe23343931259342ae078fafcc88fa7, type: 3}
+  healthGlobe: {fileID: 8031162842319521324, guid: bc918e88924b98b4d9ed326039573ce0, type: 3}
+  staminaGlobe: {fileID: 8031162842319521324, guid: 03a21d4aa39799b4a962e24c807f079b, type: 3}

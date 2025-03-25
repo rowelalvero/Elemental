@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8951612590665036952}
   - component: {fileID: 2857599685668401812}
   - component: {fileID: 3907759091558195291}
+  - component: {fileID: -4451711861804306443}
   m_Layer: 0
   m_Name: Big Rock
   m_TagString: Untagged
@@ -125,3 +126,15 @@ CapsuleCollider2D:
   m_Offset: {x: -0.06573561, y: -0.19720699}
   m_Size: {x: 1.328679, y: 0.6384583}
   m_Direction: 1
+--- !u!114 &-4451711861804306443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2974343950468045923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3f70f6623c69314782e961e574b73ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

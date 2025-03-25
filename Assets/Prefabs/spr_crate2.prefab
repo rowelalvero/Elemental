@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3949721023488619913}
   - component: {fileID: 8666771629454029728}
   - component: {fileID: 6070737276343218768}
+  - component: {fileID: -2616162893419541141}
   m_Layer: 0
   m_Name: spr_crate2
   m_TagString: Untagged
@@ -164,3 +165,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteFlashMat: {fileID: 2100000, guid: 6545e7baf6e15ad49aa0aa4da3dec5f6, type: 2}
   restoreDefaultMatTime: 0.2
+--- !u!114 &-2616162893419541141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748594430209188844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5857b6a5f25e0a49aecfa3179fbc0f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldCoin: {fileID: 8031162842319521324, guid: 8fe23343931259342ae078fafcc88fa7, type: 3}
+  healthGlobe: {fileID: 8031162842319521324, guid: bc918e88924b98b4d9ed326039573ce0, type: 3}
+  staminaGlobe: {fileID: 8031162842319521324, guid: 03a21d4aa39799b4a962e24c807f079b, type: 3}
