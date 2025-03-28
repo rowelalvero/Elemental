@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 24074522672892621}
   - component: {fileID: -8732903224878634017}
   - component: {fileID: 8805840098996521305}
+  - component: {fileID: 1194944052685655172}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -61,7 +62,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 8cd915a130e1e4e4ca653870a4bfb728, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4346244404228752641, guid: 0dac59cc7a8d0824186103a6995af4cc, type: 3}
+  m_Sprite: {fileID: 4801484935228389821, guid: accd0b68c55111e4b95e601b17979512, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -181,7 +182,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 59bea110df57ccf4b82e709971225dac, type: 2}
+  - {fileID: 2100000, guid: 8cd915a130e1e4e4ca653870a4bfb728, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -212,7 +213,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0.0031166077
-        value: 0.18571472
+        value: 0.40557098
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -298,7 +299,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 22
-  particleOnHitPrefabVFX: {fileID: 7458376134212959491, guid: e4a5badd2551cdd469ee29279a2c5be3, type: 3}
+  particleOnHitPrefabVFX: {fileID: 7458376134212959491, guid: bd865e0fe8f8afd47a00d1916e35c33d, type: 3}
+  isEnemyProjectile: 0
+  projectileRange: 12.4
 --- !u!114 &8805840098996521305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,3 +314,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac61de897e532746900256279b829bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1194944052685655172
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6960751827944725163}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 58483e443d401364fa4cfc77e17a8cf9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

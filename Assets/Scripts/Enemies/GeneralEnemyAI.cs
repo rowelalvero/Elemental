@@ -110,4 +110,10 @@ public class GeneralEnemyAI : MonoBehaviour
         timeRoaming = 0f;
         return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
 }

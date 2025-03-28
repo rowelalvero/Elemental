@@ -17,10 +17,12 @@ public class PlayerHealth : Singleton<PlayerHealth>
     private bool canTakeDamage = true;
     private Knockback knockback;
     private Flash flash;
+    private Animator myAnimator;
 
     const string HEALTH_SLIDER_TEXT = "Health Slider";
     const string TOWN_TEXT = "Scene 1";
     readonly int DEATH_HASH = Animator.StringToHash("Death");
+    readonly int HURT_HASH = Animator.StringToHash("isHurting");
 
     protected override void Awake()
     {
@@ -38,16 +40,6 @@ public class PlayerHealth : Singleton<PlayerHealth>
         UpdateHealthSlider();
     }
 
-    private void OnCollisionStay2D(Collision2D other)
-    {
-        EnemyAI enemy = other.gameObject.GetComponent<EnemyAI>();
-
-        if (enemy)
-        {
-            TakeDamage(1, other.transform);
-        }
-    }
-
     public void HealPlayer()
     {
         if (currentHealth < maxHealth)
@@ -62,6 +54,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
         if (!canTakeDamage) { return; }
 
         ScreenShakeManager.Instance.ShakeScreen();
+        GetComponent<Animator>().SetTrigger(HURT_HASH);
         knockback.GetKnockedBack(hitTransform, knockBackThrustAmount);
         StartCoroutine(flash.FlashRoutine());
         canTakeDamage = false;

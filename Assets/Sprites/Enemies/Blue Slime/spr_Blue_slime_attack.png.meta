@@ -94,7 +94,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -108,7 +108,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -132,7 +132,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -173,10 +173,10 @@ TextureImporter:
       name: spr_Blue_slime_attack_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 22
-        width: 19
-        height: 17
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +195,10 @@ TextureImporter:
       name: spr_Blue_slime_attack_1
       rect:
         serializedVersion: 2
-        x: 87
-        y: 22
-        width: 19
-        height: 16
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,10 +217,10 @@ TextureImporter:
       name: spr_Blue_slime_attack_2
       rect:
         serializedVersion: 2
-        x: 151
-        y: 22
-        width: 19
-        height: 16
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,10 +239,10 @@ TextureImporter:
       name: spr_Blue_slime_attack_3
       rect:
         serializedVersion: 2
-        x: 215
-        y: 22
-        width: 19
-        height: 16
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -261,10 +261,10 @@ TextureImporter:
       name: spr_Blue_slime_attack_4
       rect:
         serializedVersion: 2
-        x: 279
-        y: 22
-        width: 19
-        height: 16
+        x: 256
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,10 +283,10 @@ TextureImporter:
       name: spr_Blue_slime_attack_5
       rect:
         serializedVersion: 2
-        x: 343
-        y: 22
-        width: 19
-        height: 16
+        x: 320
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,10 +305,10 @@ TextureImporter:
       name: spr_Blue_slime_attack_6
       rect:
         serializedVersion: 2
-        x: 407
-        y: 22
-        width: 19
-        height: 16
+        x: 384
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -327,10 +327,10 @@ TextureImporter:
       name: spr_Blue_slime_attack_7
       rect:
         serializedVersion: 2
-        x: 471
-        y: 22
-        width: 19
-        height: 14
+        x: 448
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -349,10 +349,10 @@ TextureImporter:
       name: spr_Blue_slime_attack_8
       rect:
         serializedVersion: 2
-        x: 472
-        y: 36
-        width: 16
-        height: 19
+        x: 512
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -371,10 +371,10 @@ TextureImporter:
       name: spr_Blue_slime_attack_9
       rect:
         serializedVersion: 2
-        x: 535
-        y: 22
-        width: 19
-        height: 14
+        x: 576
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -393,10 +393,10 @@ TextureImporter:
       name: spr_Blue_slime_attack_10
       rect:
         serializedVersion: 2
-        x: 536
-        y: 36
-        width: 16
-        height: 20
+        x: 640
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,10 +415,10 @@ TextureImporter:
       name: spr_Blue_slime_attack_11
       rect:
         serializedVersion: 2
-        x: 599
-        y: 22
-        width: 19
-        height: 14
+        x: 704
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -437,10 +437,10 @@ TextureImporter:
       name: spr_Blue_slime_attack_12
       rect:
         serializedVersion: 2
-        x: 600
-        y: 36
-        width: 16
-        height: 20
+        x: 768
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -459,10 +459,10 @@ TextureImporter:
       name: spr_Blue_slime_attack_13
       rect:
         serializedVersion: 2
-        x: 663
-        y: 22
-        width: 19
-        height: 14
+        x: 832
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -481,10 +481,10 @@ TextureImporter:
       name: spr_Blue_slime_attack_14
       rect:
         serializedVersion: 2
-        x: 664
-        y: 36
-        width: 16
-        height: 19
+        x: 896
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -499,121 +499,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: spr_Blue_slime_attack_15
-      rect:
-        serializedVersion: 2
-        x: 727
-        y: 22
-        width: 19
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4ec8687ed1a6610f0800000000000000
-      internalID: -1146612378448261916
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_Blue_slime_attack_16
-      rect:
-        serializedVersion: 2
-        x: 728
-        y: 36
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7241085aec08c2770800000000000000
-      internalID: 8587380214516945959
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_Blue_slime_attack_17
-      rect:
-        serializedVersion: 2
-        x: 791
-        y: 22
-        width: 19
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7be90c26e5bd0ac50800000000000000
-      internalID: 6674575846193274551
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_Blue_slime_attack_18
-      rect:
-        serializedVersion: 2
-        x: 855
-        y: 22
-        width: 19
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 629e42a0fbaae49b0800000000000000
-      internalID: -5093946391023785690
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_Blue_slime_attack_19
-      rect:
-        serializedVersion: 2
-        x: 919
-        y: 22
-        width: 19
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 992fb588b7c10e770800000000000000
-      internalID: 8637935402190893721
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5bba3e6fb945c404fbb7dcffe094c9a9
     internalID: 0
     vertices: []
     indices: 
@@ -630,11 +520,6 @@ TextureImporter:
       spr_Blue_slime_attack_12: 5069096781749399945
       spr_Blue_slime_attack_13: -2525814312224773379
       spr_Blue_slime_attack_14: 7578051565581373153
-      spr_Blue_slime_attack_15: -1146612378448261916
-      spr_Blue_slime_attack_16: 8587380214516945959
-      spr_Blue_slime_attack_17: 6674575846193274551
-      spr_Blue_slime_attack_18: -5093946391023785690
-      spr_Blue_slime_attack_19: 8637935402190893721
       spr_Blue_slime_attack_2: -1043635249693406699
       spr_Blue_slime_attack_3: -4555020414000634115
       spr_Blue_slime_attack_4: -983264889815780976

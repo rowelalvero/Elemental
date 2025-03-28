@@ -23,6 +23,8 @@ public class PlayerController : Singleton<PlayerController>
     private bool facingLeft = false;
     private bool isDashing = false;
 
+    readonly int SLIDE_HASH = Animator.StringToHash("isSliding");
+
     protected override void Awake()
     {
         base.Awake();
@@ -107,8 +109,9 @@ public class PlayerController : Singleton<PlayerController>
         {
             Stamina.Instance.UseStamina();
             isDashing = true;
+            GetComponent<Animator>().SetBool(SLIDE_HASH, true);
             moveSpeed *= dashSpeed;
-            myTrailRenderer.emitting = true;
+            //myTrailRenderer.emitting = true;
             StartCoroutine(EndDashRoutine());
         }
     }
@@ -119,8 +122,9 @@ public class PlayerController : Singleton<PlayerController>
         float dashCD = .25f;
         yield return new WaitForSeconds(dashTime);
         moveSpeed = startingMoveSpeed;
-        myTrailRenderer.emitting = false;
+        //myTrailRenderer.emitting = false;
         yield return new WaitForSeconds(dashCD);
         isDashing = false;
+        GetComponent<Animator>().SetBool(SLIDE_HASH, false);
     }
 }
