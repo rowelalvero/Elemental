@@ -15,10 +15,9 @@ public class DialogueManager : MonoBehaviour
     private Queue<DialogueLine> lines;
 
     public bool isDialogueActive = false;
-
     public float typingSpeed = 0.2f;
 
-    public Animator animator;
+    public GameObject dialoguePanel; // UI Panel to show/hide
 
     private void Awake()
     {
@@ -26,13 +25,14 @@ public class DialogueManager : MonoBehaviour
             Instance = this;
 
         lines = new Queue<DialogueLine>();
+        dialoguePanel.SetActive(false); // Ensure it's hidden at start
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
         isDialogueActive = true;
 
-        animator.Play("show");
+        dialoguePanel.SetActive(true); // Show dialogue UI
 
         lines.Clear();
 
@@ -58,7 +58,6 @@ public class DialogueManager : MonoBehaviour
         characterName.text = currentLine.character.name;
 
         StopAllCoroutines();
-
         StartCoroutine(TypeSentence(currentLine));
     }
 
@@ -75,6 +74,6 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         isDialogueActive = false;
-        animator.Play("hide");
+        dialoguePanel.SetActive(false); // Hide dialogue UI
     }
 }
