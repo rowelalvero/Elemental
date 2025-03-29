@@ -72355,11 +72355,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3785161996346100470, guid: 624129909755c60439966e4b4904821c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.86
+      value: 4.97
       objectReference: {fileID: 0}
     - target: {fileID: 3785161996346100470, guid: 624129909755c60439966e4b4904821c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.49
+      value: -2.48
       objectReference: {fileID: 0}
     - target: {fileID: 3785161996346100470, guid: 624129909755c60439966e4b4904821c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -83776,24 +83776,60 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1377386979448873382, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
-      propertyPath: dialogues.Array.data[4].speaker
-      value: your death
+      propertyPath: dialogues.Array.data[0].speaker
+      value: Old Man
       objectReference: {fileID: 0}
+    - target: {fileID: 1377386979448873382, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
+      propertyPath: dialogues.Array.data[1].speaker
+      value: someone
+      objectReference: {fileID: 0}
+    - target: {fileID: 1377386979448873382, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
+      propertyPath: dialogues.Array.data[2].speaker
+      value: Old Man
+      objectReference: {fileID: 0}
+    - target: {fileID: 1377386979448873382, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
+      propertyPath: dialogues.Array.data[4].speaker
+      value: Old Man
+      objectReference: {fileID: 0}
+    - target: {fileID: 1377386979448873382, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
+      propertyPath: dialogues.Array.data[0].portrait
+      value: 
+      objectReference: {fileID: -741795745019258883, guid: 76a59ef996c53c64bb48fae131d5727d, type: 3}
+    - target: {fileID: 1377386979448873382, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
+      propertyPath: dialogues.Array.data[1].portrait
+      value: 
+      objectReference: {fileID: 4108624642752802163, guid: 9935fe966ae92ff469978ed84476485b, type: 3}
+    - target: {fileID: 1377386979448873382, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
+      propertyPath: dialogues.Array.data[2].portrait
+      value: 
+      objectReference: {fileID: -985714212584088775, guid: 76a59ef996c53c64bb48fae131d5727d, type: 3}
     - target: {fileID: 1377386979448873382, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
       propertyPath: dialogues.Array.data[4].portrait
       value: 
-      objectReference: {fileID: -7658572256405384373, guid: 90da0a70c5c7c3c4295bbd74e83f36d8, type: 3}
+      objectReference: {fileID: -985714212584088775, guid: 76a59ef996c53c64bb48fae131d5727d, type: 3}
     - target: {fileID: 1377386979448873382, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
       propertyPath: dialogues.Array.data[4].mobSpawner
       value: 
       objectReference: {fileID: 1999767085}
     - target: {fileID: 1377386979448873382, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
       propertyPath: dialogues.Array.data[0].triggerSpawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1377386979448873382, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
       propertyPath: dialogues.Array.data[4].triggerSpawn
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1377386979448873382, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
+      propertyPath: dialogues.Array.data[0].dialogueWords
+      value: Hello there, are you new to this place.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1377386979448873382, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
+      propertyPath: dialogues.Array.data[1].dialogueWords
+      value: Yes, haven't been around this parts.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1377386979448873382, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
+      propertyPath: dialogues.Array.data[2].dialogueWords
+      value: Lel
       objectReference: {fileID: 0}
     - target: {fileID: 1377386979448873382, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
       propertyPath: dialogues.Array.data[4].dialogueWords
@@ -83846,8 +83882,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 274165184069881124, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3224164043614555791}
   m_SourcePrefab: {fileID: 100100000, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
+--- !u!1 &3224164043614555790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 274165184069881124, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
+  m_PrefabInstance: {fileID: 3224164043614555789}
+  m_PrefabAsset: {fileID: 0}
+--- !u!320 &3224164043614555791
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3224164043614555790}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1001 &3316715272571426838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84149,6 +84210,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3462243704261090241, guid: bcb3227816671984c8c83694b701d815, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4067790337146634803, guid: bcb3227816671984c8c83694b701d815, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657776752120713890, guid: bcb3227816671984c8c83694b701d815, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657776752120713890, guid: bcb3227816671984c8c83694b701d815, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5725254718031539298, guid: bcb3227816671984c8c83694b701d815, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -84197,6 +84274,38 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6185964035795059636, guid: bcb3227816671984c8c83694b701d815, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460304184660979529, guid: bcb3227816671984c8c83694b701d815, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460304184660979529, guid: bcb3227816671984c8c83694b701d815, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483474506710163184, guid: bcb3227816671984c8c83694b701d815, type: 3}
+      propertyPath: m_Value
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575579593809118109, guid: bcb3227816671984c8c83694b701d815, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575579593809118109, guid: bcb3227816671984c8c83694b701d815, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723553070540822796, guid: bcb3227816671984c8c83694b701d815, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723553070540822796, guid: bcb3227816671984c8c83694b701d815, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6850440088051024990, guid: bcb3227816671984c8c83694b701d815, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -84243,6 +84352,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7702475493347649954, guid: bcb3227816671984c8c83694b701d815, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459052634069093101, guid: bcb3227816671984c8c83694b701d815, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8504746896119898675, guid: bcb3227816671984c8c83694b701d815, type: 3}

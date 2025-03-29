@@ -16,6 +16,13 @@ public class MobSpawn : MonoBehaviour
         gameObject.SetActive(false); // Start disabled
     }
 
+    private void OnEnable()
+    {
+        // Reset values properly whenever the spawner is re-enabled
+        spawnedCount = 0;
+        timer = 0;
+    }
+
     void Update()
     {
         if (spawnedCount >= count)
@@ -43,9 +50,7 @@ public class MobSpawn : MonoBehaviour
 
     public void EnableSpawner()
     {
-        gameObject.SetActive(true);
-        spawnedCount = 0; // Reset count
-        timer = 0; // Reset timer
+        gameObject.SetActive(true); // Enable the spawner
     }
 
     void DisableSpawner()
