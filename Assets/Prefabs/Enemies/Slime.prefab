@@ -315,7 +315,7 @@ MonoBehaviour:
   dashDuration: 0.5
   dashDistance: 1.5
   warningUIPrefab: {fileID: 7214008148259496781, guid: 27c3c9765c64f63479fc4cbdc18a3c2a, type: 3}
-  damageCollider: {fileID: 0}
+  damageCollider: {fileID: 8606578022913763926}
   spawnAttack: {fileID: 7958499824645589111}
   returnToOriginalPositionAfterAttack: 0
   returnSpeed: 3

@@ -5,7 +5,7 @@ public class CloudSpawner : MonoBehaviour
     public GameObject cloud;
     public float spawnRate = 2f;
     private float timer = 0;
-    public float heightOffset = 4;
+    public float heightOffset = 6;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
