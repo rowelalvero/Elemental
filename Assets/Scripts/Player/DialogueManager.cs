@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
@@ -13,11 +12,9 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueArea;
 
     private Queue<DialogueLine> lines;
-
     public bool isDialogueActive = false;
-    public float typingSpeed = 0.2f;
 
-    public GameObject dialoguePanel; // UI Panel to show/hide
+    public GameObject dialoguePanel;
 
     private void Awake()
     {
@@ -25,14 +22,13 @@ public class DialogueManager : MonoBehaviour
             Instance = this;
 
         lines = new Queue<DialogueLine>();
-        dialoguePanel.SetActive(false); // Ensure it's hidden at start
+        dialoguePanel.SetActive(false);
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
         isDialogueActive = true;
-
-        dialoguePanel.SetActive(true); // Show dialogue UI
+        dialoguePanel.SetActive(true);
 
         lines.Clear();
 
@@ -57,23 +53,14 @@ public class DialogueManager : MonoBehaviour
         characterIcon.sprite = currentLine.character.icon;
         characterName.text = currentLine.character.name;
 
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(currentLine));
-    }
+        dialogueArea.text = ""; 
 
-    IEnumerator TypeSentence(DialogueLine dialogueLine)
-    {
-        dialogueArea.text = "";
-        foreach (char letter in dialogueLine.line.ToCharArray())
-        {
-            dialogueArea.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
-        }
+        dialogueArea.text = currentLine.line; 
     }
 
     void EndDialogue()
     {
         isDialogueActive = false;
-        dialoguePanel.SetActive(false); // Hide dialogue UI
+        dialoguePanel.SetActive(false);
     }
 }
