@@ -18,6 +18,13 @@ public class dialogue : MonoBehaviour
     [SerializeField]
     private Image portraitImage;
 
+    //[Header("Choice Settings")]
+    //[SerializeField] private GameObject choicePanel; // Panel containing buttons
+    //[SerializeField] private Transform choiceContainer; // The Vertical Layout Group
+    //[SerializeField] private Button choiceButtonPrefab; // Prefab for choice buttons
+
+    //This will be the dialogue choices, the plan will be to use vertical group for button prefab spawning for muti choice scenario
+
     [Header("Content")]
     [SerializeField]
     private List<DialogueEntry> dialogues = new List<DialogueEntry>();
