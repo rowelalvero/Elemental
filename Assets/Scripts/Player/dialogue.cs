@@ -1,11 +1,11 @@
-
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class dialogue : MonoBehaviour
 {
-
+    [Header("Dialogue Settings")]
     [SerializeField]
     private GameObject dialogueCanvas;
 
@@ -16,49 +16,49 @@ public class dialogue : MonoBehaviour
     private TMP_Text dialogueText;
 
     [SerializeField]
-    private Image protraitImage;
+    private Image portraitImage;
 
-    //Dialogue Content
+    [Header("Content")]
     [SerializeField]
-    private string[] speaker;
-
-    [SerializeField]
-    [TextArea]
-    private string[] dialogueWords;
-
-    [SerializeField]
-    private Sprite[] portrait;
+    private List<DialogueEntry> dialogues = new List<DialogueEntry>();
 
     private bool dialogueActivated;
-    private int step;
+    private int step = 0;
+
+    [System.Serializable]
+    public class DialogueEntry
+    {
+        public string speaker;
+        public Sprite portrait;
+        [TextArea(2, 8)]
+        public string dialogueWords;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player") { 
-             dialogueActivated = true;
+        if (collision.gameObject.tag == "Player")
+        {
+            dialogueActivated = true;
         }
     }
 
-
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Interact") && dialogueActivated == true)
+        if (Input.GetButtonDown("Interact") && dialogueActivated)
         {
-            if (step >= speaker.Length)
+            if (step >= dialogues.Count)
             {
                 dialogueCanvas.SetActive(false);
                 step = 0;
-
             }
-            else {
+            else
+            {
                 dialogueCanvas.SetActive(true);
-                speakerText.text = speaker[step];
-                dialogueText.text = dialogueWords[step];
-                protraitImage.sprite = portrait[step];
+                speakerText.text = dialogues[step].speaker;
+                dialogueText.text = dialogues[step].dialogueWords;
+                portraitImage.sprite = dialogues[step].portrait;
                 step += 1;
             }
-            
         }
     }
 
