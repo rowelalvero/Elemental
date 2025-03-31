@@ -17,6 +17,7 @@ public class TitleStart : MonoBehaviour
 
     void LoadNextScene()
     {
+    //loads scene
         SceneManager.LoadScene(sceneToLoad);
     }
 }
