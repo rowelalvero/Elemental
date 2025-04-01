@@ -3,6 +3,7 @@ using UnityEngine.Playables;
 using Cinemachine;
 
 //package install timeline and cinemachine
+//drag animation
 
 public class CutsceneTrigger : MonoBehaviour
 {
