@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ElementType : MonoBehaviour
 {
+    [Header("Element type of Mob")]
     public bool isFire = false;
     public bool isWater = false;
     public bool isEarth = false;
@@ -14,7 +15,7 @@ public class ElementType : MonoBehaviour
         if (isWater) return "Water";
         if (isEarth) return "Earth";
         if (isWind) return "Wind";
-        return "None"; // Default if no element is selected
+        return "None";
     }
 
     // Example of usage to check for an element
