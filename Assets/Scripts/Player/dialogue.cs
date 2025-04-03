@@ -50,6 +50,7 @@ public class dialogue : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            step = 0;
             dialogueActivated = true;
         }
     }
@@ -85,5 +86,6 @@ public class dialogue : MonoBehaviour
     {
         dialogueActivated = false;
         dialogueCanvas.SetActive(false);
+        step = 0;
     }
 }

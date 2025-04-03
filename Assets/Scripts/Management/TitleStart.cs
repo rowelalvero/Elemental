@@ -39,6 +39,8 @@ public class TitleStart : MonoBehaviour
 
     void LoadNextScene()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(sceneToLoad);
     }
 
