@@ -40,10 +40,14 @@ public class dialogue : MonoBehaviour
         [TextArea(2, 8)]
         public string dialogueWords;
 
-        [Tooltip("Optional MobSpawner script to trigger at this step.")]
-        public SummonMarkOn mobSpawner;  // Can be left empty
+        [Tooltip("Script to trigger at this step.")]
+        public MonoBehaviour scriptToTrigger; // Any script that has a function
 
-        public bool triggerSpawn;  // If true, will call EnableSpawn()
+        [Tooltip("Function to call from the assigned script.")]
+        public string functionName; // Function name to invoke
+
+        [Tooltip("Optional parameter for the function (e.g., mobSpawner(1)).")]
+        public int functionParameter; // Function parameter, if needed
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -72,13 +76,12 @@ public class dialogue : MonoBehaviour
                 portraitImage.sprite = dialogues[step].portrait;
 
                 // Check if mobSpawner is assigned and triggerSpawn is enabled
-                if (dialogues[step].mobSpawner != null && dialogues[step].triggerSpawn)
+                if (dialogues[step].scriptToTrigger != null && !string.IsNullOrEmpty(dialogues[step].functionName))
                 {
-                    dialogues[step].mobSpawner.EnableSpawn();
+                    TriggerScriptByFunction(dialogues[step].scriptToTrigger, dialogues[step].functionName, dialogues[step].functionParameter);
                 }
-
-                step += 1;
             }
+            step += 1;
         }
     }
 
@@ -88,4 +91,27 @@ public class dialogue : MonoBehaviour
         dialogueCanvas.SetActive(false);
         step = 0;
     }
+    void TriggerScriptByFunction(MonoBehaviour scriptToTrigger, string functionName, int parameter)
+    {
+        if (scriptToTrigger != null)
+        {
+            // Use reflection to find the method with the name "functionName"
+            var method = scriptToTrigger.GetType().GetMethod(functionName);
+            if (method != null)
+            {
+                // Invoke the method, passing the parameter to it
+                method.Invoke(scriptToTrigger, new object[] { parameter });
+                return; // Exit after invoking the correct function
+            }
+            else
+            {
+                Debug.LogError($"Method '{functionName}' not found in script '{scriptToTrigger.GetType()}'");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Script to trigger is null.");
+        }
+    }
+
 }

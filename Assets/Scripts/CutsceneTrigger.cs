@@ -5,7 +5,7 @@ using System.Collections;
 public class CutsceneTrigger : MonoBehaviour
 {
     public PlayableDirector timeline;
-    public float cutsceneDuration = 75f; // Duration before the timeline stops
+    public float cutsceneDuration = 75f; // Duration before the timeline stops, change again whenever edits are made, with the public code
     public System.Action OnCutsceneEnd; // Callback for when the timeline stops
 
     public void PlayTimeline()

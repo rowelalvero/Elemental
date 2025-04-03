@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class MobSpawn : MonoBehaviour
 {
+    [Header("ID set")]
+    public int spawnerID; // Unique identifier for the spawner (integer)
+
     public GameObject MobTarget;
     public float count = 6; // Number of mobs to spawn before stopping
     public float spawnRate = 2f; // Time between spawns
@@ -49,9 +52,12 @@ public class MobSpawn : MonoBehaviour
         }
     }
 
-    public void EnableSpawner()
+    public void EnableSpawner(int id)
     {
-        gameObject.SetActive(true); // Enable the spawner
+        if (id == spawnerID)
+        {
+            gameObject.SetActive(true); // Enable the spawner if the IDs match
+        }
     }
 
     void DisableSpawner()

@@ -17,4 +17,7 @@ public class CursorLock : MonoBehaviour
     {
         
     }
+        //in case you want to reuse, its the return cursor code
+        //Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
 }
