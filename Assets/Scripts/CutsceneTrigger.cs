@@ -1,43 +1,43 @@
-using UnityEngine;
-using UnityEngine.Playables;
+//using UnityEngine;
+//using UnityEngine.Playables;
 //using Cinemachine;
 
 //package install timeline and cinemachine
 //drag animation
 
-public class CutsceneTrigger : MonoBehaviour
-{
-    //public PlayableDirector timeline; // Assign the Timeline asset here
-    //public GameObject player;
-    //public GameObject cutsceneCamera;
-    //public GameObject gameplayCamera;
+//public class CutsceneTrigger : MonoBehaviour
+//{
+//    public PlayableDirector timeline; // Assign the Timeline asset here
+//    public GameObject player;
+//    public GameObject cutsceneCamera;
+//    public GameObject gameplayCamera;
 
-    void Start()
-    {
+//    void Start()
+//    {
 //       gameplayCamera.SetActive(true);
 //        cutsceneCamera.SetActive(false);
-    }
+//    }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
+//    void OnTriggerEnter2D(Collider2D other)
+//    {
 //        if (other.gameObject == player)
-        {
-            StartCutscene();
-        }
-    }
+//        {
+//            StartCutscene();
+//        }
+//    }
 
-    void StartCutscene()
-    {
-////        gameplayCamera.SetActive(false);
+//    void StartCutscene()
+//    {
+//        gameplayCamera.SetActive(false);
 //        cutsceneCamera.SetActive(true);
 //        timeline.Play();
-        //StartCoroutine(EndCutscene());
-    }
+//        StartCoroutine(EndCutscene());
+//    }
 
-    //System.Collections.IEnumerator EndCutscene()
-    {
-        //yield return new WaitForSeconds((float)timeline.duration);
-        //cutsceneCamera.SetActive(false);
-        //gameplayCamera.SetActive(true);
-    }
-}
+//    System.Collections.IEnumerator EndCutscene()
+//    {
+//        yield return new WaitForSeconds((float)timeline.duration);
+//        cutsceneCamera.SetActive(false);
+//        gameplayCamera.SetActive(true);
+//    }
+//}
