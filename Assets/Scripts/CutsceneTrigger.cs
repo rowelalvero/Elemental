@@ -1,43 +1,37 @@
-//using UnityEngine;
-//using UnityEngine.Playables;
-//using Cinemachine;
+using UnityEngine;
+using UnityEngine.Playables;
+using System.Collections;
 
-//package install timeline and cinemachine
-//drag animation
+public class CutsceneTrigger : MonoBehaviour
+{
+    public PlayableDirector timeline;
+    public float cutsceneDuration = 75f; // Duration before the timeline stops
+    public System.Action OnCutsceneEnd; // Callback for when the timeline stops
 
-//public class CutsceneTrigger : MonoBehaviour
-//{
-//    public PlayableDirector timeline; // Assign the Timeline asset here
-//    public GameObject player;
-//    public GameObject cutsceneCamera;
-//    public GameObject gameplayCamera;
+    public void PlayTimeline()
+    {
+        if (timeline != null)
+        {
+            timeline.Play();
+            StartCoroutine(StopTimelineAfterSeconds(cutsceneDuration));
+        }
+    }
 
-//    void Start()
-//    {
-//       gameplayCamera.SetActive(true);
-//        cutsceneCamera.SetActive(false);
-//    }
+    private IEnumerator StopTimelineAfterSeconds(float duration)
+    {
+        yield return new WaitForSeconds(duration);
 
-//    void OnTriggerEnter2D(Collider2D other)
-//    {
-//        if (other.gameObject == player)
-//        {
-//            StartCutscene();
-//        }
-//    }
+        if (timeline != null && timeline.state == PlayState.Playing)
+        {
+            timeline.Stop();
+        }
 
-//    void StartCutscene()
-//    {
-//        gameplayCamera.SetActive(false);
-//        cutsceneCamera.SetActive(true);
-//        timeline.Play();
-//        StartCoroutine(EndCutscene());
-//    }
+        // Call the event when the cutscene ends
+        OnCutsceneEnd?.Invoke();
+    }
 
-//    System.Collections.IEnumerator EndCutscene()
-//    {
-//        yield return new WaitForSeconds((float)timeline.duration);
-//        cutsceneCamera.SetActive(false);
-//        gameplayCamera.SetActive(true);
-//    }
-//}
+    public bool IsTimelinePlaying()
+    {
+        return timeline != null && timeline.state == PlayState.Playing;
+    }
+}

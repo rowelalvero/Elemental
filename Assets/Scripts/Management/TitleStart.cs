@@ -1,23 +1,53 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class TitleStart : MonoBehaviour
 {
     public string sceneToLoad = "Scene 2";
+    public CutsceneTrigger CutsceneTrigger;
+
+    void Start()
+    {
+        if (CutsceneTrigger != null)
+        {
+            CutsceneTrigger.OnCutsceneEnd += LoadNextScene;
+        }
+    }
 
     void Update()
     {
-        // Check if Enter or Return key is pressed
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            LoadNextScene();
+            if (CutsceneTrigger != null)
+            {
+                CutsceneTrigger.PlayTimeline();
+                StartCoroutine(WaitForCutscene());
+            }
         }
+    }
+
+    System.Collections.IEnumerator WaitForCutscene()
+    {
+        while (CutsceneTrigger.IsTimelinePlaying())
+        {
+            yield return null;
+        }
+
+        // Load the next scene when the cutscene ends
+        LoadNextScene();
     }
 
     void LoadNextScene()
     {
-    //loads scene
         SceneManager.LoadScene(sceneToLoad);
+    }
+
+    private void OnDestroy()
+    {
+        // Remove event listener to avoid memory leaks
+        if (CutsceneTrigger != null)
+        {
+            CutsceneTrigger.OnCutsceneEnd -= LoadNextScene;
+        }
     }
 }
