@@ -261,7 +261,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2499789847108132040}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d04262e5f098373428bfe94ba56bb389, type: 3}
   m_Name: 
@@ -293,7 +293,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   heightY: 3
   grapeProjectileShadow: {fileID: 1883526313203245473, guid: 7fb15e3076ed09b4c821e06f8d1b63ec, type: 3}
-  splatterPrefab: {fileID: 0}
+  splatterPrefab: {fileID: 8606578022913763926}
 --- !u!114 &8965325742927482550
 MonoBehaviour:
   m_ObjectHideFlags: 0

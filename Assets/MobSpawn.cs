@@ -5,8 +5,6 @@ public class MobSpawn : MonoBehaviour
     public GameObject MobTarget;
     public float count = 6; // Number of mobs to spawn before stopping
     public float spawnRate = 2f; // Time between spawns
-    public float lowestPoint = -3f; // Lowest Y spawn position
-    public float highestPoint = 3f; // Highest Y spawn position
 
     private float timer = 0;
     private int spawnedCount = 0; // Track number of spawned mobs
@@ -44,8 +42,11 @@ public class MobSpawn : MonoBehaviour
 
     void SpawnMob()
     {
-        Instantiate(MobTarget, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0), transform.rotation);
-        spawnedCount++; // Increase count of spawned mobs
+        if (MobTarget != null)
+        {
+            Instantiate(MobTarget, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
+            spawnedCount++; // Increase count of spawned mobs
+        }
     }
 
     public void EnableSpawner()
