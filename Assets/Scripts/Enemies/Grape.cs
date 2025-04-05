@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,24 +10,50 @@ public class Grape : MonoBehaviour, IEnemy
     private Animator myAnimator;
     private SpriteRenderer spriteRenderer;
 
-    readonly int ATTACK_HASH = Animator.StringToHash("Attack");
+    private Action onAttackFinished;
+    private bool isAttacking;
 
-    private void Awake() {
+    private static readonly int ATTACK_HASH = Animator.StringToHash("Attack");
+
+    public bool IsAttacking => isAttacking;
+
+    private void Awake()
+    {
         myAnimator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void Attack() {
+    public void Attack(Action onComplete)
+    {
+        if (isAttacking) return;
+
+        onAttackFinished = onComplete;
+        isAttacking = true;
+
         myAnimator.SetTrigger(ATTACK_HASH);
 
-        if (transform.position.x - PlayerController.Instance.transform.position.x < 0) {
-            spriteRenderer.flipX = false;
-        } else {
-            spriteRenderer.flipX = true;
-        }
+        // Flip to face the player
+        spriteRenderer.flipX = transform.position.x > PlayerController.Instance.transform.position.x;
+
+        StartCoroutine(WaitForAttackAnimation());
     }
 
-    public void SpawnProjectileAnimEvent() {
+    private IEnumerator WaitForAttackAnimation()
+    {
+        // Wait while animation tagged "Attack" is playing
+        while (myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+        {
+            yield return null;
+        }
+
+        isAttacking = false;
+        onAttackFinished?.Invoke();
+        onAttackFinished = null;
+    }
+
+    // Called through animation event
+    public void SpawnProjectileAnimEvent()
+    {
         Instantiate(grapeProjectilePrefab, transform.position, Quaternion.identity);
     }
 }

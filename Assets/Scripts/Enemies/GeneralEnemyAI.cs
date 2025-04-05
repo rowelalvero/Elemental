@@ -2,38 +2,66 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class GeneralEnemyAI : MonoBehaviour
 {
+    [Header("Roaming & Attack Settings")]
     [SerializeField] private float roamChangeDirFloat = 2f;
-    [SerializeField] private float attackRange = 0f;
-    [SerializeField] private MonoBehaviour enemyType;
-    [SerializeField] private float attackCooldown = 2f;
+    [SerializeField] private float attackRange = 3f;
     [SerializeField] private bool stopMovingWhileAttacking = false;
 
+    [Header("Attack Settings")]
+    [SerializeField] private float attackCooldown = 2f;
+
+    [SerializeField] private List<MonoBehaviour> attackScripts = new();
+
+    private List<IEnemy> validAttacks = new();
+    private IEnemy currentAttackScript;
+
+    private EnemyPathfinding pathfinding;
     private bool canAttack = true;
+    private bool waitingForAttackToEnd = false;
 
     private enum State
     {
         Roaming,
-        Attacking
+        Attacking,
     }
 
-    private Vector2 roamPosition;
-    private float timeRoaming = 0f;
-
     private State state;
-    private EnemyPathfinding enemyPathfinding;
+    private Vector2 roamDirection;
+    private float timeRoaming = 0f;
 
     private void Awake()
     {
-        enemyPathfinding = GetComponent<EnemyPathfinding>();
+        pathfinding = GetComponent<EnemyPathfinding>();
         state = State.Roaming;
+
+        // Validate attack scripts
+        foreach (var script in attackScripts)
+        {
+            if (script is IEnemy enemy)
+            {
+                validAttacks.Add(enemy);
+            }
+            else
+            {
+                Debug.LogWarning($"{script.name} does not implement IEnemy and will be ignored.");
+            }
+        }
+
+        if (validAttacks.Count > 0)
+        {
+            currentAttackScript = validAttacks[Random.Range(0, validAttacks.Count)];
+        }
+        else
+        {
+            Debug.LogError($"No valid IEnemy attack scripts found on {name}.");
+        }
     }
 
     private void Start()
     {
-        roamPosition = GetRoamingPosition();
+        roamDirection = GetRandomDirection();
     }
 
     private void Update()
@@ -43,60 +71,66 @@ public class GeneralEnemyAI : MonoBehaviour
 
     private void MovementStateControl()
     {
-        switch (state)
-        {
-            default:
-            case State.Roaming:
-                Roaming();
-                break;
+        float distanceToPlayer = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
 
-            case State.Attacking:
-                Attacking();
-                break;
+        if (state == State.Roaming)
+        {
+            Roaming(distanceToPlayer);
+        }
+        else if (state == State.Attacking)
+        {
+            Attacking(distanceToPlayer);
         }
     }
 
-    private void Roaming()
+    private void Roaming(float distanceToPlayer)
     {
         timeRoaming += Time.deltaTime;
 
-        enemyPathfinding.MoveTo(roamPosition);
-
-        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < attackRange)
+        if (!waitingForAttackToEnd)
         {
-            state = State.Attacking;
+            pathfinding.MoveTo(roamDirection);
         }
 
+        // Switch to Attacking if the player is within attack range
+        if (distanceToPlayer < attackRange)
+        {
+            state = State.Attacking; // Attack when within range
+        }
+
+        // Change roam direction after some time
         if (timeRoaming > roamChangeDirFloat)
         {
-            roamPosition = GetRoamingPosition();
+            roamDirection = GetRandomDirection();
         }
     }
 
-    private void Attacking()
+    private void Attacking(float distanceToPlayer)
     {
-        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > attackRange)
+        if (distanceToPlayer > attackRange && !waitingForAttackToEnd)
         {
-            state = State.Roaming;
+            state = State.Roaming; // Return to roaming if the player moves out of attack range
         }
 
-        if (attackRange != 0 && canAttack)
+        if (canAttack && !waitingForAttackToEnd && currentAttackScript != null)
         {
-
             canAttack = false;
-            (enemyType as IEnemy).Attack();
+            waitingForAttackToEnd = true;
 
-            if (stopMovingWhileAttacking)
-            {
-                enemyPathfinding.StopMoving();
-            }
-            else
-            {
-                enemyPathfinding.MoveTo(roamPosition);
-            }
+            pathfinding.StopMoving(); // Stop moving during attack
 
-            StartCoroutine(AttackCooldownRoutine());
+            currentAttackScript.Attack(OnAttackFinished);
         }
+    }
+
+    private void OnAttackFinished()
+    {
+        // Once the attack has finished, return to roaming state
+        waitingForAttackToEnd = false;
+        state = State.Roaming;
+
+        // Start cooldown before the next attack
+        StartCoroutine(AttackCooldownRoutine());
     }
 
     private IEnumerator AttackCooldownRoutine()
@@ -105,7 +139,7 @@ public class GeneralEnemyAI : MonoBehaviour
         canAttack = true;
     }
 
-    private Vector2 GetRoamingPosition()
+    private Vector2 GetRandomDirection()
     {
         timeRoaming = 0f;
         return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
@@ -113,7 +147,7 @@ public class GeneralEnemyAI : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);   // Attack range
     }
 }

@@ -1,375 +1,153 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class EnemyChargeAttack : MonoBehaviour, IEnemy
 {
-    [Header("Detection & Attack Settings")]
-    [SerializeField] private float detectionRadius = 5f;
-    [SerializeField] private float attackRange = 1.5f;
-    [SerializeField] private float speed = 2f;
-    [SerializeField] private float attackCooldown = 1.5f;
-
-    [Header("Dash Attack Settings")]
+    [Header("Attack Settings")]
     [SerializeField] private float windUpTime = 1f;
     [SerializeField] private float dashSpeed = 8f;
-    [SerializeField] private float dashDuration = 0.5f;
-    [SerializeField] private float dashDistance = 1.5f;
+    [SerializeField] private float dashDistance = 1.5f; // Distance the charge will cover
+    [SerializeField] private GameObject warningUIPrefab; // Warning UI prefab
+    [SerializeField] private GameObject damageCollider;  // Attack collider prefab
+    [SerializeField] private Transform spawnAttack;      // Anchor point for the attack
+    [SerializeField] private bool stopMovingWhileCharging = false; // Option to stop moving while charging
 
-    [Header("References")]
-    [SerializeField] private GameObject warningUIPrefab;
-    [SerializeField] private GameObject damageCollider;
-    [SerializeField] private Transform spawnAttack;
-
-    [Header("Position Tracking")]
-    [SerializeField] private bool returnToOriginalPositionAfterAttack = false;
-    [SerializeField] private float returnSpeed = 3f;
-
-    private bool isReturningFromAttack = false;
-    private Transform player;
     private bool isAttacking = false;
+    private bool isCharging = false; // New flag to control charging state
+    private Transform player;
     private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
     private Animator animator;
     private Vector2 savedAttackDirection;
-    private Vector2 savedOriginalPosition;
     private GameObject warningUIInstance;
-
+    private Action onAttackFinished;
     private const string PlayerTag = "Player";
     private readonly int AttackHash = Animator.StringToHash("isAttacking");
 
-    private enum State
-    {
-        Roaming,
-        Chasing,
-        Attacking
-    }
-
-    private State currentState;
-    private Coroutine roamingCoroutine;
-    private Coroutine attackCoroutine;
+    // IEnemy implementation
+    public bool IsAttacking => isAttacking;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-
-        // Initialize with null checks
         player = GameObject.FindWithTag(PlayerTag)?.transform;
 
         if (warningUIPrefab != null)
         {
-            warningUIInstance = Instantiate(warningUIPrefab, spawnAttack.position, Quaternion.identity);
-            warningUIInstance.SetActive(false);
-        }
-        else
-        {
-            Debug.LogError("Warning UI Prefab is not assigned in the inspector!", this);
+            // Create the warning UI and attach it to the enemy's position
+            warningUIInstance = Instantiate(warningUIPrefab, transform.position, Quaternion.identity);
+            warningUIInstance.transform.SetParent(transform); // Attach to enemy
+            warningUIInstance.SetActive(false); // Initially hidden
         }
 
         if (damageCollider != null)
         {
-            damageCollider.SetActive(false);
+            damageCollider.SetActive(false); // Initially inactive
         }
     }
 
-    private void Start()
+    public void Attack(Action onComplete)
     {
-        currentState = State.Roaming; // Set directly first
-        TransitionToState(State.Roaming); // Then properly initialize
-    }
-
-    private void Update()
-    {
-        if (isReturningFromAttack) return;
-
-        if (player == null)
+        if (!isAttacking && !isCharging)
         {
-            TryFindPlayer();
-            return;
-        }
-
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-        switch (currentState)
-        {
-            case State.Roaming:
-                if (distanceToPlayer <= detectionRadius)
-                {
-                    TransitionToState(State.Chasing);
-                }
-                break;
-
-            case State.Chasing:
-                if (distanceToPlayer > detectionRadius)
-                {
-                    TransitionToState(State.Roaming);
-                }
-                else if (!isAttacking)
-                {
-                    HandleAttackAI(distanceToPlayer);
-                }
-                break;
-
-            case State.Attacking:
-                // Attack behavior is handled in the coroutine
-                break;
-        }
-
-        UpdateSpriteFlip();
-    }
-
-    private void TryFindPlayer()
-    {
-        player = GameObject.FindWithTag(PlayerTag)?.transform;
-        if (player == null && currentState != State.Roaming)
-        {
-            TransitionToState(State.Roaming);
-        }
-    }
-
-    private void TransitionToState(State newState)
-    {
-
-        Debug.Log($"Transitioning from {currentState} to {newState}");
-
-        // Clean up previous state
-        switch (currentState)
-        {
-            case State.Roaming:
-                StopRoaming();
-                break;
-            case State.Chasing:
-                rb.linearVelocity = Vector2.zero;
-                break;
-        }
-
-        currentState = newState;
-
-        // Initialize new state
-        switch (newState)
-        {
-            case State.Roaming:
-                StartRoaming();
-                break;
-            case State.Chasing:
-                // Ensure we stop any roaming when chasing
-                StopRoaming();
-                break;
-        }
-    }
-
-    private void UpdateSpriteFlip()
-    {
-        if (spriteRenderer == null || rb == null) return;
-
-        // Only flip if we have significant horizontal movement
-        if (Mathf.Abs(rb.linearVelocity.x) > 0.1f)
-        {
-            spriteRenderer.flipX = rb.linearVelocity.x > 0;
-        }
-    }
-
-    public void Attack()
-    {
-        if (!isAttacking && attackCoroutine == null)
-        {
-            attackCoroutine = StartCoroutine(AttackRoutine());
-        }
-    }
-
-    private void HandleAttackAI(float distance)
-    {
-        if (distance > attackRange)
-        {
-            MoveTowards(player.position);
-        }
-        else
-        {
-            Attack();
+            onAttackFinished = onComplete;
+            StartCoroutine(AttackRoutine());
         }
     }
 
     private IEnumerator AttackRoutine()
     {
-
-        yield return new WaitForSeconds(attackCooldown);
-
         isAttacking = true;
-        savedOriginalPosition = rb.position;
-        TransitionToState(State.Attacking);
 
-        // Step 1: Prepare attack
-        rb.linearVelocity = Vector2.zero;
-        savedAttackDirection = (player.position - transform.position).normalized;
+        // Step 1: Prepare for attack
+        rb.linearVelocity = Vector2.zero;  // Stop all movement
+        savedAttackDirection = (player.position - transform.position).normalized; // Calculate direction to player
 
-        // Update attack spawn position and rotation
-        if (spawnAttack != null)
+        // Step 2: Wind-up (charging state)
+        isCharging = true;  // Begin charging state, disallow other movement
+
+        if (animator != null)
         {
-            spawnAttack.position = transform.position + (Vector3)savedAttackDirection * dashDistance;
-            float angle = Mathf.Atan2(savedAttackDirection.y, savedAttackDirection.x) * Mathf.Rad2Deg;
-            spawnAttack.rotation = Quaternion.Euler(0, 0, angle);
+            animator.SetBool(AttackHash, true); // Trigger the charge animation
         }
 
-        // Show warning UI
+        // Show warning UI during wind-up time
         if (warningUIInstance != null)
         {
-            warningUIInstance.transform.SetPositionAndRotation(
-                spawnAttack.position,
-                spawnAttack.rotation);
+            // Calculate the position at the end of the dash
+            Vector2 dashEndPosition = (Vector2)transform.position + savedAttackDirection * dashDistance;
+            warningUIInstance.transform.position = dashEndPosition; // Move the warning UI to the dash end point
             warningUIInstance.SetActive(true);
         }
 
-        if (animator != null)
-        {
-            animator.SetBool(AttackHash, true);
-        }
+        yield return new WaitForSeconds(windUpTime); // Wait for wind-up time to complete
 
-        // Step 2: Wind-up delay
-        yield return new WaitForSeconds(windUpTime);
-
-        // Step 3: Execute dash attack
+        // Remove warning UI before starting the dash
         if (warningUIInstance != null)
         {
-            warningUIInstance.SetActive(false);
+            warningUIInstance.SetActive(false); // Hide warning UI
         }
 
+        // Step 3: Prepare collider for damage
         if (damageCollider != null)
         {
-            damageCollider.SetActive(true);
+            damageCollider.SetActive(true); // Activate the damage collider
         }
 
-        float dashTime = 0f;
-        Vector2 dashTarget = rb.position + savedAttackDirection * dashDistance;
+        // Step 4: Perform Dash - Gradual movement towards player
+        float distanceCovered = 0f;  // Track how much distance we've covered during the dash
 
-        while (dashTime < dashDuration)
+        while (distanceCovered < dashDistance) // Keep moving until the total dash distance is covered
         {
-            rb.linearVelocity = savedAttackDirection * dashSpeed;
-            dashTime += Time.deltaTime;
+            // Move towards the target direction at the desired speed
+            float moveDistance = dashSpeed * Time.deltaTime;
+            rb.linearVelocity = savedAttackDirection * dashSpeed; // Move towards the player
 
-            // Early exit if we reach the target
-            if (Vector2.Distance(rb.position, dashTarget) <= 0.1f)
-            {
-                break;
-            }
+            distanceCovered += moveDistance;  // Increment the distance covered
 
-            yield return null;
+            // Update the position of the enemy
+            transform.position += (Vector3)savedAttackDirection * moveDistance;
+
+            yield return null; // Wait for the next frame
         }
 
-        // Clean up attack
-        rb.linearVelocity = Vector2.zero;
-        rb.position = dashTarget;
+        // After the dash is complete, stop movement and reset states
+        rb.linearVelocity = Vector2.zero; // Stop the movement
 
+        // Step 5: Deactivate damage collider after the attack
         if (damageCollider != null)
         {
-            damageCollider.SetActive(false);
+            damageCollider.SetActive(false); // Deactivate damage collider after the dash
         }
 
-        // After attack completes
-        if (returnToOriginalPositionAfterAttack)
-        {
-            yield return StartCoroutine(ReturnToOriginalPosition());
-        }
-
-        // Reset attack state
-        isAttacking = false;
+        // Clean-up and reset attack state
         if (animator != null)
         {
-            animator.SetBool(AttackHash, false);
+            animator.SetBool(AttackHash, false); // Reset attack animation state
         }
 
-        attackCoroutine = null;
-        TransitionToState(State.Chasing);
-    }
-
-    private IEnumerator ReturnToOriginalPosition()
-    {
-        isReturningFromAttack = true;
-
-        while (Vector2.Distance(rb.position, savedOriginalPosition) > 0.1f)
-        {
-            Vector2 direction = (savedOriginalPosition - rb.position).normalized;
-            rb.linearVelocity = direction * returnSpeed;
-            yield return null;
-        }
-
+        isCharging = false; // End charging state
+        isAttacking = false; // Reset attacking state
+        onAttackFinished?.Invoke(); // Notify that the attack is finished
+        onAttackFinished = null; // Clear the callback
         rb.linearVelocity = Vector2.zero;
-        rb.position = savedOriginalPosition;
-        isReturningFromAttack = false;
     }
 
-    private void MoveTowards(Vector2 target)
+    private void OnDestroy()
     {
-        if (rb == null) return;
-
-        Vector2 direction = (target - rb.position).normalized;
-        rb.linearVelocity = direction * speed;
+        if (warningUIInstance != null)
+            Destroy(warningUIInstance); // Clean up warning UI when object is destroyed
     }
-
-    #region Roaming Behavior
-    private IEnumerator RoamingRoutine()
-    {
-        Debug.Log("Roaming routine started");
-        while (currentState == State.Roaming)
-        {
-            if (rb == null) yield break;
-
-            Vector2 roamPosition = GetRoamingPosition();
-            Debug.Log($"Moving to roam position: {roamPosition}");
-            MoveTowards(roamPosition);
-            yield return new WaitForSeconds(2f);
-        }
-        Debug.Log("Roaming routine ended");
-    }
-
-    private void StartRoaming()
-    {
-        StopRoaming();
-        roamingCoroutine = StartCoroutine(RoamingRoutine());
-    }
-
-    private void StopRoaming()
-    {
-        if (roamingCoroutine != null)
-        {
-            StopCoroutine(roamingCoroutine);
-            roamingCoroutine = null;
-        }
-
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector2.zero;
-        }
-    }
-
-    private Vector2 GetRoamingPosition()
-    {
-        Vector2 randomDirection = new Vector2(
-            Random.Range(-1f, 1f),
-            Random.Range(-1f, 1f)).normalized;
-        return rb.position + randomDirection * 2f;
-    }
-    #endregion
 
     public Transform GetAttackCollider()
     {
         return damageCollider != null ? damageCollider.transform : null;
     }
 
-    private void OnDestroy()
-    {
-        if (warningUIInstance != null)
-        {
-            Destroy(warningUIInstance);
-        }
-    }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        Gizmos.DrawWireSphere(transform.position, dashDistance); // Visualize dash distance in the editor
     }
 }

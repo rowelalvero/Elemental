@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,24 +10,51 @@ public class SummonSlime : MonoBehaviour, IEnemy
     private Animator myAnimator;
     private SpriteRenderer spriteRenderer;
 
-    readonly int ATTACK_HASH = Animator.StringToHash("isSummoning");
+    private Action onAttackFinished;
+    private bool isAttacking;
 
-    private void Awake() {
+    readonly int ATTACK_TRIGGER_HASH = Animator.StringToHash("isSummoning");
+
+    public bool IsAttacking => isAttacking;
+
+    private void Awake()
+    {
         myAnimator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void Attack() {
-        myAnimator.SetTrigger(ATTACK_HASH);
+    public void Attack(Action onComplete)
+    {
+        if (isAttacking) return;
 
-        if (transform.position.x - PlayerController.Instance.transform.position.x < 0) {
-            spriteRenderer.flipX = false;
-        } else {
-            spriteRenderer.flipX = true;
-        }
+        onAttackFinished = onComplete;
+        isAttacking = true;
+
+        myAnimator.SetTrigger(ATTACK_TRIGGER_HASH);
+
+        // Flip sprite to face the player
+        spriteRenderer.flipX = transform.position.x > PlayerController.Instance.transform.position.x;
+
+        StartCoroutine(WaitForAttackAnimation());
     }
 
-    public void SpawnProjectileAnimEvent() {
+    private IEnumerator WaitForAttackAnimation()
+    {
+        // Wait until the summoning animation state ends
+        while (myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Summoning"))
+        {
+            yield return null;
+        }
+
+        // Once animation ends, notify the system
+        isAttacking = false;
+        onAttackFinished?.Invoke();
+        onAttackFinished = null;
+    }
+
+    // Called via animation event
+    public void SpawnProjectileAnimEvent()
+    {
         Instantiate(grapeProjectilePrefab, transform.position, Quaternion.identity);
     }
 }
