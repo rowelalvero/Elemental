@@ -5,7 +5,7 @@ using UnityEngine;
 public class GeneralEnemyAI : MonoBehaviour
 {
     [Header("Roaming & Attack Settings")]
-    [SerializeField] private float roamChangeDirFloat = 2f;
+    [SerializeField] private float roamChangeDirFloat = 2f;  // Time before changing direction
     [SerializeField] private float attackRange = 3f;
     [SerializeField] private bool stopMovingWhileAttacking = false;
 
@@ -30,6 +30,7 @@ public class GeneralEnemyAI : MonoBehaviour
     private State state;
     private Vector2 roamDirection;
     private float timeRoaming = 0f;
+    private float roamDirectionChangeTimer = 0f;  // Timer to control when to change direction
 
     private void Awake()
     {
@@ -71,15 +72,22 @@ public class GeneralEnemyAI : MonoBehaviour
 
     private void MovementStateControl()
     {
-        float distanceToPlayer = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
-
-        if (state == State.Roaming)
+        if (PlayerController.Instance != null)
         {
-            Roaming(distanceToPlayer);
+            float distanceToPlayer = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
+            if (state == State.Roaming)
+            {
+                Roaming(distanceToPlayer);
+            }
+            else if (state == State.Attacking)
+            {
+                Attacking(distanceToPlayer);
+            }
         }
-        else if (state == State.Attacking)
+        else
         {
-            Attacking(distanceToPlayer);
+            // Handle case when player is not in the scene
+            HandlePlayerNotInScene();
         }
     }
 
@@ -98,10 +106,13 @@ public class GeneralEnemyAI : MonoBehaviour
             state = State.Attacking; // Attack when within range
         }
 
-        // Change roam direction after some time
-        if (timeRoaming > roamChangeDirFloat)
+        // Change roam direction after some time, but in a controlled manner
+        roamDirectionChangeTimer += Time.deltaTime;
+
+        if (roamDirectionChangeTimer > roamChangeDirFloat)
         {
             roamDirection = GetRandomDirection();
+            roamDirectionChangeTimer = 0f; // Reset the timer
         }
     }
 
@@ -141,8 +152,26 @@ public class GeneralEnemyAI : MonoBehaviour
 
     private Vector2 GetRandomDirection()
     {
-        timeRoaming = 0f;
+        // Generate a random direction for the enemy to move towards
         return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+    }
+
+    private void HandlePlayerNotInScene()
+    {
+        // If no player, keep the enemy roaming randomly but in a smoother way
+        if (state == State.Roaming && !waitingForAttackToEnd)
+        {
+            roamDirectionChangeTimer += Time.deltaTime;
+
+            // Only change direction after a certain period to prevent erratic movement
+            if (roamDirectionChangeTimer > roamChangeDirFloat)
+            {
+                roamDirection = GetRandomDirection();  // Change direction
+                roamDirectionChangeTimer = 0f;        // Reset the timer
+            }
+
+            pathfinding.MoveTo(roamDirection);  // Move the enemy in the new direction
+        }
     }
 
     private void OnDrawGizmosSelected()
