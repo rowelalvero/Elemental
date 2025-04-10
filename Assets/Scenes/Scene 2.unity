@@ -73395,6 +73395,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4339937147883178087, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7713355441924381158, guid: 8b1c3b7d9e1841640b7abe3bdad700ff, type: 3}
       propertyPath: m_Name
       value: Old Lady
