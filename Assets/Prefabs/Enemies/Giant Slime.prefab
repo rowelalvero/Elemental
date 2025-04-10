@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 8262879194725350414}
   - component: {fileID: 4005233966018533604}
   - component: {fileID: 7349857043661328695}
-  - component: {fileID: 2398158471552818840}
   - component: {fileID: 1844806020120474848}
   - component: {fileID: 743774044291366465}
   - component: {fileID: 4502783314767447498}
   - component: {fileID: 8131825742219096641}
   - component: {fileID: 1408621151833759731}
+  - component: {fileID: 2398158471552818840}
+  - component: {fileID: 3303994538508357865}
   - component: {fileID: 8980404892465844747}
   - component: {fileID: 2655266186532134066}
   m_Layer: 0
@@ -184,23 +185,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2398158471552818840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8546549442171141880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 929f87fbb1b1ea94a9ab2fe9d523a15e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roamChangeDirFloat: 2
-  attackRange: 13.72
-  enemyType: {fileID: 8980404892465844747}
-  attackCooldown: 1
-  stopMovingWhileAttacking: 0
 --- !u!114 &1844806020120474848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +254,47 @@ MonoBehaviour:
   goldCoin: {fileID: 8031162842319521324, guid: 8fe23343931259342ae078fafcc88fa7, type: 3}
   healthGlobe: {fileID: 8031162842319521324, guid: bc918e88924b98b4d9ed326039573ce0, type: 3}
   staminaGlobe: {fileID: 8031162842319521324, guid: 03a21d4aa39799b4a962e24c807f079b, type: 3}
+--- !u!114 &2398158471552818840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8546549442171141880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929f87fbb1b1ea94a9ab2fe9d523a15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roamChangeDirFloat: 2
+  attackRange: 13.72
+  stopMovingWhileAttacking: 0
+  attackCooldown: 4
+  attackScripts:
+  - {fileID: 8980404892465844747}
+  - {fileID: 3303994538508357865}
+--- !u!114 &3303994538508357865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8546549442171141880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c82b96e45e6e64b849219f18666b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 2214548833945285150, guid: be10e110e7a191948810385e627a9f7e, type: 3}
+  bulletMoveSpeed: 2
+  burstCount: 5
+  projectilesPerBurst: 15
+  angleSpread: 359
+  startingDistance: 0.1
+  timeBetweenBursts: 0.3
+  restTime: 1
+  stagger: 1
+  oscillate: 1
 --- !u!114 &8980404892465844747
 MonoBehaviour:
   m_ObjectHideFlags: 0
