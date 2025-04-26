@@ -9,4 +9,10 @@ public class WeaponInfo : ScriptableObject
     public float weaponCooldown;
     public int weaponDamage;
     public float weaponRange;
+
+    // Replacing enum with booleans
+    public bool isFire;
+    public bool isEarth;
+    public bool isWater;
+    public bool isWind;
 }

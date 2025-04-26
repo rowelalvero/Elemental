@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 7378252227635678837}
   - component: {fileID: 5415207652844083100}
   - component: {fileID: 8965325742927482550}
+  - component: {fileID: -3446341682198828850}
   m_Layer: 0
   m_Name: FireElemental
   m_TagString: Untagged
@@ -306,19 +307,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bce886ea09536346a60f70a8a91c150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 5
-  attackRange: 1.5
-  speed: 2
-  attackCooldown: 1
   windUpTime: 1
   dashSpeed: 8
-  dashDuration: 0.5
   dashDistance: 1.5
   warningUIPrefab: {fileID: 7214008148259496781, guid: 27c3c9765c64f63479fc4cbdc18a3c2a, type: 3}
   damageCollider: {fileID: 8606578022913763926}
   spawnAttack: {fileID: 7958499824645589111}
-  returnToOriginalPositionAfterAttack: 0
-  returnSpeed: 3
+  stopMovingWhileCharging: 0
+--- !u!114 &-3446341682198828850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2499789847108132040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8deee09dd9d408742b5d67f98c7b724a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFire: 1
+  isWater: 0
+  isEarth: 0
+  isWind: 0
 --- !u!1 &3061791917248309150
 GameObject:
   m_ObjectHideFlags: 0

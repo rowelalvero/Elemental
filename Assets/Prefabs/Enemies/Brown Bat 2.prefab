@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 1303069468855263390}
   - component: {fileID: 2207737167422128286}
   - component: {fileID: 5489447849401200486}
+  - component: {fileID: 3301747424513262314}
   m_Layer: 0
   m_Name: Brown Bat 2
   m_TagString: Untagged
@@ -198,9 +199,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roamChangeDirFloat: 2
   attackRange: 5
-  enemyType: {fileID: 2207737167422128286}
-  attackCooldown: 2
   stopMovingWhileAttacking: 0
+  attackCooldown: 2
+  attackScripts: []
 --- !u!114 &4550468568819755310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,3 +306,19 @@ MonoBehaviour:
   goldCoin: {fileID: 8031162842319521324, guid: 8fe23343931259342ae078fafcc88fa7, type: 3}
   healthGlobe: {fileID: 8031162842319521324, guid: bc918e88924b98b4d9ed326039573ce0, type: 3}
   staminaGlobe: {fileID: 8031162842319521324, guid: 03a21d4aa39799b4a962e24c807f079b, type: 3}
+--- !u!114 &3301747424513262314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6716402742597229151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8deee09dd9d408742b5d67f98c7b724a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFire: 0
+  isWater: 0
+  isEarth: 0
+  isWind: 1

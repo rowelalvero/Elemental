@@ -7619,6 +7619,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4550468568819755310, guid: 5bf9ac4700a199c46b6f54a2937f220e, type: 3}
+      propertyPath: startingHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4795621150858730975, guid: 5bf9ac4700a199c46b6f54a2937f220e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.35
@@ -26456,6 +26460,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4550468568819755310, guid: 5bf9ac4700a199c46b6f54a2937f220e, type: 3}
+      propertyPath: startingHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4795621150858730975, guid: 5bf9ac4700a199c46b6f54a2937f220e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22.23
@@ -28299,6 +28307,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 350671106}
     m_Modifications:
+    - target: {fileID: 2110648856747279331, guid: 9a64bb6334ca17047bce3db285b39aab, type: 3}
+      propertyPath: startingHealth
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2499789847108132040, guid: 9a64bb6334ca17047bce3db285b39aab, type: 3}
       propertyPath: m_Name
       value: Slime (20)
@@ -62649,6 +62661,10 @@ PrefabInstance:
     - target: {fileID: 3087711347684419412, guid: 5bf9ac4700a199c46b6f54a2937f220e, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550468568819755310, guid: 5bf9ac4700a199c46b6f54a2937f220e, type: 3}
+      propertyPath: startingHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4795621150858730975, guid: 5bf9ac4700a199c46b6f54a2937f220e, type: 3}
       propertyPath: m_LocalPosition.x

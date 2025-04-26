@@ -16,3 +16,7 @@ MonoBehaviour:
   weaponCooldown: 0.5
   weaponDamage: 1
   weaponRange: 0
+  isFire: 0
+  isEarth: 0
+  isWater: 0
+  isWind: 1

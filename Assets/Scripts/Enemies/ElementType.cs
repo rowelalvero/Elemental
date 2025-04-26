@@ -17,6 +17,13 @@ public class ElementType : MonoBehaviour
         if (isWind) return "Wind";
         return "None";
     }
+    public void SetNeutral()
+    {
+        isFire = false;
+        isEarth = false;
+        isWater = false;
+        isWind = false;
+    }
 
     // Example of usage to check for an element
     void Start()

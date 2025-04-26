@@ -78,6 +78,8 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
         {
             AttackCooldown();
             (CurrentActiveWeapon as IWeapon).Attack();
+
+            ElementSeekerTracker.Instance.OnPlayerAttack();
         }
     }
 }
