@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 4224050278906903873}
   - component: {fileID: 24074522672892621}
   - component: {fileID: -8732903224878634017}
-  - component: {fileID: 8805840098996521305}
   - component: {fileID: 1194944052685655172}
   m_Layer: 0
   m_Name: EarthArrow
@@ -302,18 +301,8 @@ MonoBehaviour:
   particleOnHitPrefabVFX: {fileID: 7458376134212959491, guid: bd865e0fe8f8afd47a00d1916e35c33d, type: 3}
   isEnemyProjectile: 0
   projectileRange: 12.4
---- !u!114 &8805840098996521305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6960751827944725163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fac61de897e532746900256279b829bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  spawnAOEOnHit: 1
+  aoePrefab: {fileID: 1113174070408301790, guid: 954441906ce89914080270e6f24dc1a0, type: 3}
 --- !u!95 &1194944052685655172
 Animator:
   serializedVersion: 7

@@ -9,6 +9,10 @@ public class Projectile : MonoBehaviour
     [SerializeField] private bool isEnemyProjectile = false;
     [SerializeField] private float projectileRange = 10f;
 
+    [Header("AOE Settings")]
+    [SerializeField] private bool spawnAOEOnHit = false;
+    [SerializeField] private GameObject aoePrefab;
+
     private Vector3 startPosition;
 
     private void Start()
@@ -40,27 +44,34 @@ public class Projectile : MonoBehaviour
 
         if (!other.isTrigger && (enemyHealth || indestructible || player))
         {
-            if ((player && isEnemyProjectile) || (enemyHealth && !isEnemyProjectile))
+            bool validTarget = (player && isEnemyProjectile) || (enemyHealth && !isEnemyProjectile);
+
+            if (validTarget || indestructible)
             {
                 player?.TakeDamage(1, transform);
-                Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
-                Destroy(gameObject);
-            }
-            else if (!other.isTrigger && indestructible)
-            {
-                Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
+
+                if (particleOnHitPrefabVFX)
+                    Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
+
+                if (spawnAOEOnHit && aoePrefab != null)
+                    Instantiate(aoePrefab, transform.position, Quaternion.identity);
+
                 Destroy(gameObject);
             }
         }
     }
-
-    private void DetectFireDistance()
+private void DetectFireDistance()
     {
         if (Vector3.Distance(transform.position, startPosition) > projectileRange)
         {
+            if (spawnAOEOnHit && aoePrefab != null)
+            {
+                Instantiate(aoePrefab, transform.position, Quaternion.identity);
+            }
             Destroy(gameObject);
         }
     }
+
 
     private void MoveProjectile()
     {
