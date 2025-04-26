@@ -1,22 +1,7 @@
 fileFormatVersion: 2
 guid: eea5599ba44270e42978e4a9d56b7812
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -9169520832861858867
-    second: EarthStrike_0
-  - first:
-      213: 5095530944598703381
-    second: EarthStrike_1
-  - first:
-      213: -2877443681887159278
-    second: EarthStrike_2
-  - first:
-      213: -3783154585630861693
-    second: EarthStrike_3
-  - first:
-      213: 3322704707631044943
-    second: EarthStrike_4
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
