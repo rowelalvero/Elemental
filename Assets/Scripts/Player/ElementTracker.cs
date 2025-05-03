@@ -37,7 +37,7 @@ public class ElementSeekerTracker : Singleton<ElementSeekerTracker>
         main.value += 1f;
         opposite.value -= 2f;
         fade1.value -= 1f;
-        fade2.value -= 0.5f;
+        fade2.value -= 1f;
 
         ClampSlider(main);
         ClampSlider(opposite);

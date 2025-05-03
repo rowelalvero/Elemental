@@ -21,6 +21,11 @@ public class GeneralEnemyAI : MonoBehaviour
     private bool canAttack = true;
     private bool waitingForAttackToEnd = false;
 
+    [Header("Boss Aggro Settings")]
+    [SerializeField] private bool useBossAggro = false;
+    [SerializeField] private float bossAggroRange = 5f;
+
+
     private enum State
     {
         Roaming,
@@ -79,18 +84,45 @@ public class GeneralEnemyAI : MonoBehaviour
             float distanceToPlayer = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
             if (state == State.Roaming)
             {
-                Roaming(distanceToPlayer);
+                if (useBossAggro && distanceToPlayer <= bossAggroRange && distanceToPlayer > attackRange)
+                {
+                    AggroMoveTowardPlayer();
+                }
+                else
+                {
+                    Roaming(distanceToPlayer);
+                }
             }
             else if (state == State.Attacking)
             {
                 Attacking(distanceToPlayer);
             }
+
         }
         else
         {
             // Handle case when player is not in the scene
             HandlePlayerNotInScene();
         }
+    }
+    private void OnValidate()
+    {
+        if (!useBossAggro)
+            bossAggroRange = 0f;
+
+        if (bossAggroRange > 0f && bossAggroRange <= attackRange)
+            Debug.LogWarning("Boss aggro range should be greater than attack range to work properly.");
+    }
+
+    private void AggroMoveTowardPlayer()
+    {
+        if (PlayerController.Instance == null) return;
+
+        Vector2 playerPos = PlayerController.Instance.transform.position;
+        Vector2 direction = (playerPos - (Vector2)transform.position).normalized;
+
+        pathfinding.MoveTo(direction);
+        Debug.Log("[BossAggro] Moving toward player within aggro range.");
     }
 
     private void Roaming(float distanceToPlayer)
@@ -113,6 +145,7 @@ public class GeneralEnemyAI : MonoBehaviour
         if (timeRoaming > roamChangeDirFloat)
         {
             roamDirection = GetRandomDirection();
+            timeRoaming = 0f;
         }
     }
 
@@ -200,8 +233,7 @@ public class GeneralEnemyAI : MonoBehaviour
         // If no player, keep the enemy roaming randomly
         if (state == State.Roaming && !waitingForAttackToEnd)
         {
-            roamDirection = GetRandomDirection();
-            pathfinding.MoveTo(roamDirection);
+            Roaming(Mathf.Infinity);
         }
     }
 
