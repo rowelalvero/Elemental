@@ -30,6 +30,8 @@ public class TransparentDetection : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.GetComponent<PlayerController>())
         {
+            if (!gameObject.activeInHierarchy)
+                return;
             if (spriteRenderer) {
                 StartCoroutine(FadeRoutine(spriteRenderer, fadeTime, spriteRenderer.color.a, 1f));
             } else if (tilemap) {

@@ -201,7 +201,10 @@ MonoBehaviour:
   attackRange: 5
   stopMovingWhileAttacking: 0
   attackCooldown: 2
-  attackScripts: []
+  attackScripts:
+  - {fileID: 2207737167422128286}
+  useBossAggro: 0
+  bossAggroRange: 0
 --- !u!114 &4550468568819755310
 MonoBehaviour:
   m_ObjectHideFlags: 0

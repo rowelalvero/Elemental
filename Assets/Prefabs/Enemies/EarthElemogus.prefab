@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2110648856747279331}
   - component: {fileID: 3173270030499047874}
   - component: {fileID: 8752065446368186225}
+  - component: {fileID: 4717413457192495535}
   - component: {fileID: 5482359596962920120}
   - component: {fileID: 7378252227635678837}
   - component: {fileID: 5415207652844083100}
@@ -228,6 +229,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteFlashMat: {fileID: 2100000, guid: 6545e7baf6e15ad49aa0aa4da3dec5f6, type: 2}
   restoreDefaultMatTime: 0.2
+--- !u!114 &4717413457192495535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2499789847108132040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929f87fbb1b1ea94a9ab2fe9d523a15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roamChangeDirFloat: 2
+  attackRange: 3
+  stopMovingWhileAttacking: 0
+  attackCooldown: 2
+  attackScripts:
+  - {fileID: 8965325742927482550}
+  useBossAggro: 0
+  bossAggroRange: 0
 --- !u!114 &5482359596962920120
 MonoBehaviour:
   m_ObjectHideFlags: 0

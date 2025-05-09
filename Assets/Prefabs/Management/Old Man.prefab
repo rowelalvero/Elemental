@@ -99,15 +99,27 @@ MonoBehaviour:
   - speaker: 123917287318723
     portrait: {fileID: -362340397226355171, guid: 90da0a70c5c7c3c4295bbd74e83f36d8, type: 3}
     dialogueWords: awadawdawd
+    scriptToTrigger: {fileID: 0}
+    functionName: 
+    functionParameter: 0
   - speaker: awdwdaw
     portrait: {fileID: -362340397226355171, guid: 90da0a70c5c7c3c4295bbd74e83f36d8, type: 3}
     dialogueWords: wdawdawd
+    scriptToTrigger: {fileID: 0}
+    functionName: 
+    functionParameter: 0
   - speaker: awadadad
     portrait: {fileID: -7658572256405384373, guid: 90da0a70c5c7c3c4295bbd74e83f36d8, type: 3}
     dialogueWords: ddddddddddd
+    scriptToTrigger: {fileID: 0}
+    functionName: 
+    functionParameter: 0
   - speaker: meow
     portrait: {fileID: -7658572256405384373, guid: 90da0a70c5c7c3c4295bbd74e83f36d8, type: 3}
     dialogueWords: rrraar
+    scriptToTrigger: {fileID: 0}
+    functionName: 
+    functionParameter: 0
 --- !u!1 &7713355441924381158
 GameObject:
   m_ObjectHideFlags: 0

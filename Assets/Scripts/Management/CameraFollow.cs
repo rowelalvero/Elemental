@@ -9,9 +9,18 @@ public class CameraFollow : MonoBehaviour
     public Transform target;
 
     // Update is called once per frame
-    void Update()
+void Update()
     {
+        if (!target)
+        {
+            GameObject player = GameObject.FindWithTag("Player");
+            if (player) target = player.transform;
+            return;
+        }
+
         Vector3 newPos = new Vector3(target.position.x, target.position.y + yOffset, -10f);
         transform.position = Vector3.Slerp(transform.position, newPos, FollowSpeed * Time.deltaTime);
     }
+
+
 }
