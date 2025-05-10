@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 8507034623143337060}
   - component: {fileID: 1905244030900857589}
   - component: {fileID: 446222816700578455}
-  - component: {fileID: 4339937147883178087}
   m_Layer: 0
   m_Name: Old Man
   m_TagString: Untagged
@@ -260,55 +259,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4339937147883178087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7713355441924381158}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55607619bb96ab14db276aa029d684d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    dialogueLines:
-    - character:
-        name: 
-        icon: {fileID: -5795717412078372941, guid: 76a59ef996c53c64bb48fae131d5727d, type: 3}
-      line: Ah, you there! You look like you're not from around here. What brings
-        you to our humble town?
-    - character:
-        name: 
-        icon: {fileID: 8943998719802223876, guid: c58f98a6901510f498c9780f48f0065c, type: 3}
-      line: I'm here to explore.
-    - character:
-        name: 
-        icon: {fileID: -5795717412078372941, guid: 76a59ef996c53c64bb48fae131d5727d, type: 3}
-      line: Exploring, eh? Well, mind your step around these parts. Strange things
-        have been happening lately.
-    - character:
-        name: 
-        icon: {fileID: 8943998719802223876, guid: c58f98a6901510f498c9780f48f0065c, type: 3}
-      line: What kind of strange things?
-    - character:
-        name: 
-        icon: {fileID: -5795717412078372941, guid: 76a59ef996c53c64bb48fae131d5727d, type: 3}
-      line: We've been hearing rumors about strange lights in the forest at night.
-        People are saying it's cursed, but who knows? If you're planning on going
-        into the woods, be careful.
-    - character:
-        name: 
-        icon: {fileID: 8943998719802223876, guid: c58f98a6901510f498c9780f48f0065c, type: 3}
-      line: What exactly is cursed about it?
-    - character:
-        name: 
-        icon: {fileID: -5795717412078372941, guid: 76a59ef996c53c64bb48fae131d5727d, type: 3}
-      line: "Nobody knows for sure. Some say it\u2019s the spirits of the old kings,
-        others think it\u2019s just old superstitions. Either way, I wouldn\u2019t
-        risk it if I were you."
-    - character:
-        name: 
-        icon: {fileID: 8943998719802223876, guid: c58f98a6901510f498c9780f48f0065c, type: 3}
-      line: "Got it. I\u2019ll be careful."
