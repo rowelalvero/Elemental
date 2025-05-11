@@ -16,12 +16,22 @@ public class DamageSource : MonoBehaviour
     {
         EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
         ElementType enemyElement = other.GetComponent<ElementType>();
+        ElementWeakness enemyWeakness = other.GetComponent<ElementWeakness>();
 
-        // If the enemy doesn't have the GenElementType component, treat it as 'None'
         if (enemyElement == null)
         {
-            enemyElement = new ElementType();  // Create a neutral (None) element type
-            enemyElement.SetNeutral(); // Set to neutral (None) if no element is found
+            enemyElement = new ElementType();
+            enemyElement.SetNeutral();
+        }
+
+        if (enemyWeakness != null)
+        {
+            string weaponElement = GetWeaponElement();
+            if (!enemyWeakness.CanBeDamagedBy(weaponElement))
+            {
+                Debug.Log($"{other.name} is immune to {weaponElement} attacks.");
+                return;
+            }
         }
 
         if (enemyHealth != null)
@@ -31,9 +41,19 @@ public class DamageSource : MonoBehaviour
         }
     }
 
+    // Normal Element Check
+    private string GetWeaponElement()
+    {
+        if (weaponInfo.isFire) return "Fire";
+        if (weaponInfo.isWater) return "Water";
+        if (weaponInfo.isEarth) return "Earth";
+        if (weaponInfo.isWind) return "Wind";
+        return "None";
+    }
+
     private int CalculateElementalDamage(int damage, WeaponInfo weapon, ElementType enemy)
     {
-        // Advantage relationships
+        // Increase Damage
         if ((weapon.isFire && enemy.isEarth) ||
             (weapon.isWater && enemy.isFire) ||
             (weapon.isWind && enemy.isWater) ||
@@ -42,7 +62,7 @@ public class DamageSource : MonoBehaviour
             return Mathf.RoundToInt(damage * 1.5f);
         }
 
-        // Resistance (reverse) relationships
+        // Resist Damage
         if ((weapon.isEarth && enemy.isFire) ||
             (weapon.isFire && enemy.isWater) ||
             (weapon.isWater && enemy.isWind) ||
@@ -51,7 +71,7 @@ public class DamageSource : MonoBehaviour
             return Mathf.RoundToInt(damage * 0.5f);
         }
 
-        // Neutral or matching types
+        // Neutral Damage
         return damage;
     }
 }

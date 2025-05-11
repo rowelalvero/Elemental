@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1962614024505705806}
   - component: {fileID: 119147792292954181}
   - component: {fileID: 1804915970779506064}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ArrowTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}

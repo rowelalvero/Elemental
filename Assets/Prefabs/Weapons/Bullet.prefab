@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1962614024505705806}
   - component: {fileID: 119147792292954181}
   - component: {fileID: 1804915970779506064}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,3 +169,5 @@ MonoBehaviour:
   particleOnHitPrefabVFX: {fileID: 7458376134212959491, guid: 35115e1df71736146b3b3860d14c11bf, type: 3}
   isEnemyProjectile: 1
   projectileRange: 10
+  spawnAOEOnHit: 0
+  aoePrefab: {fileID: 0}

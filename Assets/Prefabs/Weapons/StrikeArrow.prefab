@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 24074522672892621}
   - component: {fileID: -8732903224878634017}
   - component: {fileID: 1194944052685655172}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StrikeArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

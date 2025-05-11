@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -8732903224878634017}
   - component: {fileID: 8805840098996521305}
   - component: {fileID: 1194944052685655172}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,6 +302,8 @@ MonoBehaviour:
   particleOnHitPrefabVFX: {fileID: 7458376134212959491, guid: bd865e0fe8f8afd47a00d1916e35c33d, type: 3}
   isEnemyProjectile: 0
   projectileRange: 12.4
+  spawnAOEOnHit: 0
+  aoePrefab: {fileID: 0}
 --- !u!114 &8805840098996521305
 MonoBehaviour:
   m_ObjectHideFlags: 0
