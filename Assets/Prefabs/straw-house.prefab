@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 5084025837387776159}
   - component: {fileID: 7965352711553138113}
-  - component: {fileID: 6712845725827838874}
+  - component: {fileID: 7849318841929214260}
   m_Layer: 0
   m_Name: straw-house
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5084025837387776159
 Transform:
@@ -88,8 +88,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &6712845725827838874
-CapsuleCollider2D:
+--- !u!61 &7849318841929214260
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -122,6 +122,15 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.025042696, y: -1.9232734}
-  m_Size: {x: 6.3973126, y: 2.250274}
-  m_Direction: 1
+  m_Offset: {x: -0.31754076, y: -1.3149787}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.56, y: 3.28}
+    newSize: {x: 8, y: 6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3.4903867, y: 0.6500428}
+  m_EdgeRadius: 0

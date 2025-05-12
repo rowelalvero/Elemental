@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 5415207652844083100}
   - component: {fileID: 8965325742927482550}
   - component: {fileID: 7940937408517789950}
+  - component: {fileID: 120593783256532344}
   m_Layer: 0
   m_Name: EarthElemogus
   m_TagString: Untagged
@@ -351,6 +352,19 @@ MonoBehaviour:
   isWater: 0
   isEarth: 1
   isWind: 0
+--- !u!114 &120593783256532344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2499789847108132040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780665a6c563a8341819f05cb83fbb67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
 --- !u!1 &3061791917248309150
 GameObject:
   m_ObjectHideFlags: 0
