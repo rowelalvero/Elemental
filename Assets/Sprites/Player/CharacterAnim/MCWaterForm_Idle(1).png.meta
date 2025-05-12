@@ -1,0 +1,290 @@
+fileFormatVersion: 2
+guid: 32d16fa37328b584e95ca14647dea28a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2375102240534297961
+    second: MCWaterForm_Idle(1)_0
+  - first:
+      213: -5552676607731059310
+    second: MCWaterForm_Idle(1)_1
+  - first:
+      213: 276489246528102672
+    second: MCWaterForm_Idle(1)_2
+  - first:
+      213: 1331634111376636049
+    second: MCWaterForm_Idle(1)_3
+  - first:
+      213: -8511422163170906634
+    second: MCWaterForm_Idle(1)_4
+  - first:
+      213: 2609510458420170706
+    second: MCWaterForm_Idle(1)_5
+  - first:
+      213: 7588490154638335470
+    second: MCWaterForm_Idle(1)_6
+  - first:
+      213: 5218803222892723331
+    second: MCWaterForm_Idle(1)_7
+  - first:
+      213: 723253754219616708
+    second: MCWaterForm_Idle(1)_8
+  - first:
+      213: 3883620796320083075
+    second: MCWaterForm_Idle(1)_9
+  - first:
+      213: 6202945453738429640
+    second: MCWaterForm_Idle(1)_10
+  - first:
+      213: 5504969091440578450
+    second: MCWaterForm_Idle(1)_11
+  - first:
+      213: -5185383177772621121
+    second: MCWaterForm_Idle(1)_12
+  - first:
+      213: 3297399316817753883
+    second: MCWaterForm_Idle(1)_13
+  - first:
+      213: 4041570616219054391
+    second: MCWaterForm_Idle(1)_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MCWaterForm_Idle(1)_8
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 149
+        width: 202
+        height: 342
+      alignment: 9
+      pivot: {x: 0.48104706, y: 0.39365435}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c95abe1573890a00800000000000000
+      internalID: 723253754219616708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCWaterForm_Idle(1)_11
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 149
+        width: 219
+        height: 383
+      alignment: 9
+      pivot: {x: 0.5131111, y: 0.3587683}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29f02dad834956c40800000000000000
+      internalID: 5504969091440578450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCWaterForm_Idle(1)_12
+      rect:
+        serializedVersion: 2
+        x: 1799
+        y: 139
+        width: 232
+        height: 404
+      alignment: 9
+      pivot: {x: 0.56600744, y: 0.3388279}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb2a3902971d908b0800000000000000
+      internalID: -5185383177772621121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCWaterForm_Idle(1)_13
+      rect:
+        serializedVersion: 2
+        x: 2578
+        y: 129
+        width: 252
+        height: 413
+      alignment: 9
+      pivot: {x: 0.5742401, y: 0.3741682}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b17b9815537b2cd20800000000000000
+      internalID: 3297399316817753883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCWaterForm_Idle(1)_14
+      rect:
+        serializedVersion: 2
+        x: 3418
+        y: 139
+        width: 212
+        height: 401
+      alignment: 9
+      pivot: {x: 0.49019292, y: 0.36521885}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 731b462ff0b861830800000000000000
+      internalID: 4041570616219054391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 276815704d18da048a486fbc28afbe20
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      MCWaterForm_Idle(1)_11: 5504969091440578450
+      MCWaterForm_Idle(1)_12: -5185383177772621121
+      MCWaterForm_Idle(1)_13: 3297399316817753883
+      MCWaterForm_Idle(1)_14: 4041570616219054391
+      MCWaterForm_Idle(1)_8: 723253754219616708
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,290 @@
+fileFormatVersion: 2
+guid: 0a1630105556cfb47a06b53a33911e15
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3094459275725521456
+    second: MCEarthForm_Idle_0
+  - first:
+      213: 6937678980386576891
+    second: MCEarthForm_Idle_1
+  - first:
+      213: 2128119388712701670
+    second: MCEarthForm_Idle_2
+  - first:
+      213: -1497195073971541736
+    second: MCEarthForm_Idle_3
+  - first:
+      213: 528110297001531022
+    second: MCEarthForm_Idle_4
+  - first:
+      213: 6263509251925323875
+    second: MCEarthForm_Idle_5
+  - first:
+      213: -1334304413905019274
+    second: MCEarthForm_Idle_6
+  - first:
+      213: -6093806138953152788
+    second: MCEarthForm_Idle_7
+  - first:
+      213: -8881424604560149642
+    second: MCEarthForm_Idle_8
+  - first:
+      213: -8017962805027245960
+    second: MCEarthForm_Idle_9
+  - first:
+      213: 1109911727718247739
+    second: MCEarthForm_Idle_10
+  - first:
+      213: 3675246546884388318
+    second: MCEarthForm_Idle_11
+  - first:
+      213: 2651415734512124464
+    second: MCEarthForm_Idle_12
+  - first:
+      213: -681404038699373791
+    second: MCEarthForm_Idle_13
+  - first:
+      213: 5364380884455399725
+    second: MCEarthForm_Idle_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MCEarthForm_Idle_8
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 149
+        width: 202
+        height: 342
+      alignment: 9
+      pivot: {x: 0.4999994, y: 0.443839}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67337c1c067deb480800000000000000
+      internalID: -8881424604560149642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCEarthForm_Idle_11
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 148
+        width: 235
+        height: 385
+      alignment: 9
+      pivot: {x: 0.52179474, y: 0.39024547}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed566091349110330800000000000000
+      internalID: 3675246546884388318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCEarthForm_Idle_12
+      rect:
+        serializedVersion: 2
+        x: 1799
+        y: 139
+        width: 239
+        height: 404
+      alignment: 9
+      pivot: {x: 0.569648, y: 0.39857665}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0320a7f0098bbc420800000000000000
+      internalID: 2651415734512124464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCEarthForm_Idle_13
+      rect:
+        serializedVersion: 2
+        x: 2570
+        y: 129
+        width: 261
+        height: 428
+      alignment: 9
+      pivot: {x: 0.6079298, y: 0.38032988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12baec413aa2b86f0800000000000000
+      internalID: -681404038699373791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCEarthForm_Idle_14
+      rect:
+        serializedVersion: 2
+        x: 3419
+        y: 139
+        width: 212
+        height: 403
+      alignment: 9
+      pivot: {x: 0.46979797, y: 0.37608355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d212cd12efb127a40800000000000000
+      internalID: 5364380884455399725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 746a15e8e1229f8428ff3d65b9b9d7d5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      MCEarthForm_Idle_11: 3675246546884388318
+      MCEarthForm_Idle_12: 2651415734512124464
+      MCEarthForm_Idle_13: -681404038699373791
+      MCEarthForm_Idle_14: 5364380884455399725
+      MCEarthForm_Idle_8: -8881424604560149642
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

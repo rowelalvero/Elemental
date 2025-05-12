@@ -28,7 +28,7 @@ public class PlayerController : Singleton<PlayerController>
     private bool isDashing = false;
     private bool isRunning = false;
     private bool canParry = true;
-
+ 
     private GameObject slashAnim;
     readonly int SLIDE_HASH = Animator.StringToHash("isSliding");
 
